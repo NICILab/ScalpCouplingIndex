@@ -1,7 +1,6 @@
 % Main
-% parameterss % 
 
-group_name = 'NHV raw data';
+group_name = 'CI raw data';
 num_ch = 41;
 short_channels = [2,7,15,17,21,28,34,39];
 fs = 5.42; %taken from homer3 info
@@ -65,7 +64,7 @@ bchannel_list = [];
 bcsubject_list = [];
 for i = 1:length(info_cell)
 %      ~isempty(strfind(info_cell{i,4},'0.75') > 0) || 
-    if ~isempty(strfind(info_cell{i,4},'0.75') > 0) ||  ~isempty(strfind(info_cell{i,4},'0.6') > 0) 
+    if   ~isempty(strfind(info_cell{i,4},'0.6') > 0) 
         bchannel_list(end+1,1) = info_cell{i,2};
         bcsubject_list(end+1,1) = info_cell{i,1};
         
@@ -90,7 +89,7 @@ title1 = ["bad channel", "subjects excluded", "number of subjects"];
 info_by_channel(2:length(info_by_channel)+1,:) = info_by_channel;
 info_by_channel(1,1:length(title1)) = cellstr(title1);
 table_by_channel = table(info_by_channel);
-xl_name = strcat(group_name," bad channels SCI new2.xlsx");
+xl_name = strcat(group_name," bad channels SCI new.xlsx");
 writetable(table_by_channel,xl_name);
 
 
